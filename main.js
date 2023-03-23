@@ -1,3 +1,5 @@
+const QUOTES = "quotes";
+
 function zero(inTime) {
   if (inTime < 10) {
     inTime = "0" + inTime;
@@ -46,3 +48,57 @@ setInterval(getTime, 1000);
 
 //화살표 함수랑 function이랑 완벽히 같지는 않음
 //setInterval : 1000 은 1초
+
+function getQuotes() {
+  //   console.log("getQuotes");
+  const quotesMsg = document.querySelector(".quotesMsg");
+
+  let savedQuotes = localStorage.getItem(QUOTES);
+
+  if (!savedQuotes) {
+    localStorage.setItem(
+      QUOTES,
+      JSON.stringify([
+        "이 또한 지나가리라",
+        "강아지 고양이 섬 사기",
+        "주님이 사용하시게!!",
+      ])
+    );
+    savedQuotes = localStorage.getItem(QUOTES);
+  }
+
+  let quotesArray = JSON.parse(savedQuotes);
+  quotesMsg.innerText =
+    quotesArray[Math.floor(Math.random() * quotesArray.length)];
+}
+
+// round, ceil, floor
+setInterval(getQuotes, 1500);
+getQuotes();
+
+function onClickAdd() {
+  const newQuotes = document.querySelector(".newQuotes");
+
+  newQuotes.style.display = "inline-block";
+}
+
+function onClickRegist() {
+  const quotesMsg = document.querySelector(".quotesMsg");
+  const newQuotes = document.querySelector(".newQuotes");
+  const newQuotesInput = document.querySelector(".newQuotesInput");
+
+  if (!newQuotesInput.value || newQuotesInput.value.length === 0) {
+    alert("내용을 적어주세요");
+    newQuotesInput.focus();
+    return;
+  }
+
+  let savedQuotes = localStorage.getItem(QUOTES);
+  let quotesArray = JSON.parse(savedQuotes);
+
+  quotesArray.push(newQuotesInput.value);
+  localStorage.setItem(QUOTES, JSON.stringify(quotesArray));
+
+  quotesMsg.innerHTML = `<span>${newQuotesInput.value}</span>`;
+  newQuotes.style.display = "none";
+}
