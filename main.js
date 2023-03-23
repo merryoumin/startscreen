@@ -87,9 +87,13 @@ function onClickRegist() {
   const newQuotes = document.querySelector(".newQuotes");
   const newQuotesInput = document.querySelector(".newQuotesInput");
 
-  if (!newQuotesInput.value || newQuotesInput.value.length === 0) {
+  if (
+    !newQuotesInput.value ||
+    newQuotesInput.value.split(" ").join("").length === 0
+  ) {
     alert("내용을 적어주세요");
     newQuotesInput.focus();
+    newQuotesInput.value = null;
     return;
   }
 
