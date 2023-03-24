@@ -125,7 +125,6 @@ a:after {
   text-align: center;
   height: 60px;
   color: rgba(73, 72, 72, 0.7);
-
   font-size: 50px;
   font-weight: 900;
   width: 500px;
@@ -152,43 +151,54 @@ a:after {
   }
 }
 .newQuotes {
-  position: relative;
   display: flex;
   display: none;
-  width: 430px;
+  width: 500px;
   z-index: 4;
-
+  border-radius: 9999px;
   .newQuotesButton {
     justify-content: space-between;
     align-items: center;
     border: 0;
     border-radius: 9999px;
     width: 48px;
-    height: 40px;
+    height: 50px;
     margin-top: 15px;
     margin-left: 5px;
     margin-right: 5px;
     font-size: 15px;
+    font-weight: 900;
     text-align: center;
-
     color: #757474;
     background-color: rgba(248, 244, 108, 0.761);
   }
+
   div:nth-child(1) {
     display: inline;
+    position: absolute;
+    top: 66%;
+    left: 32%;
     button {
       background-color: rgba(22, 244, 196, 0.664);
       &:hover {
         background-color: rgb(22, 244, 196);
-        color: #2e2e31;
+        color: $SbuttonText;
       }
     }
   }
+  input {
+    position: absolute;
+    left: 38%;
+    top: 67%;
+  }
   div:nth-child(3) {
     display: inline;
+    position: absolute;
+    top: 66%;
+    left: 65%;
     button {
       &:hover {
-        color: #2e2e31;
+        color: $SbuttonText;
         background-color: rgb(243, 229, 102);
       }
     }
