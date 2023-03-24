@@ -78,7 +78,8 @@ getQuotes();
 
 function onClickAdd() {
   const newQuotes = document.querySelector(".newQuotes");
-
+  const time = document.querySelector(".time");
+  time.style = "margin-bottom :50px";
   newQuotes.style.display = "inline-block";
 }
 
@@ -86,10 +87,13 @@ function onClickRegist() {
   const quotesMsg = document.querySelector(".quotesMsg");
   const newQuotes = document.querySelector(".newQuotes");
   const newQuotesInput = document.querySelector(".newQuotesInput");
+  const time = document.querySelector(".time");
 
   if (
     !newQuotesInput.value ||
     newQuotesInput.value.split(" ").join("").length === 0
+    //공백이 포함 되있는 문장 중 공백을 기준으로 split해서 하나의 배열로 만든다음
+    // 그 배열들을 공백없는('') 구분자를 통해 연결을 하면 공백이 제거되는 방법
   ) {
     alert("내용을 적어주세요");
     newQuotesInput.focus();
@@ -98,11 +102,20 @@ function onClickRegist() {
   }
 
   let savedQuotes = localStorage.getItem(QUOTES);
-  let quotesArray = JSON.parse(savedQuotes);
+  let quotesArray = JSON.parse(savedQuotes); //자바스크립트 객체 생성
 
-  quotesArray.push(newQuotesInput.value);
-  localStorage.setItem(QUOTES, JSON.stringify(quotesArray));
+  quotesArray.push(newQuotesInput.value); //quotesArray 추가
+  localStorage.setItem(QUOTES, JSON.stringify(quotesArray)); //문자로 변환해서 저장
 
   quotesMsg.innerHTML = `<span>${newQuotesInput.value}</span>`;
+  newQuotes.style.display = "none";
+  time.style = "margin-bottom :0px";
+  newQuotesInput.value = null;
+}
+
+function onClickClose() {
+  const newQuotes = document.querySelector(".newQuotes");
+  const time = document.querySelector(".time");
+  time.style = "margin-bottom :0px";
   newQuotes.style.display = "none";
 }

@@ -4,16 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Youmin's startscreen</title>
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32x32.png"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main>
-      <a href="" target="_blank">
+      <a href="https://github.com/merryoumin/startscreen" target="_blank">
         <div class="time my-element animate__animated animate__bounce">
           Time
         </div>
@@ -25,8 +27,15 @@
         </button>
       </div>
       <div class="newQuotes">
+        <div>
+          <button class="newQuotesButton" onclick="onClickClose()">취소</button>
+        </div>
         <input class="newQuotesInput" id="newQuotesInput_" type="text" />
-        <button class="newQuotesButton" onclick="onClickRegist()">등록</button>
+        <div>
+          <button class="newQuotesButton" onclick="onClickRegist()">
+            등록
+          </button>
+        </div>
       </div>
     </main>
     <video
