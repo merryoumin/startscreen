@@ -79,8 +79,8 @@ getQuotes();
 function onClickAdd() {
   const newQuotes = document.querySelector(".newQuotes");
   const time = document.querySelector(".time");
-  time.style = "margin-bottom :50px";
   newQuotes.style.display = "inline-block";
+  time.style = "font-size: 0";
 }
 
 function onClickRegist() {
@@ -109,13 +109,76 @@ function onClickRegist() {
 
   quotesMsg.innerHTML = `<span>${newQuotesInput.value}</span>`;
   newQuotes.style.display = "none";
-  time.style = "margin-bottom :0px";
   newQuotesInput.value = null;
 }
 
 function onClickClose() {
   const newQuotes = document.querySelector(".newQuotes");
   const time = document.querySelector(".time");
-  time.style = "margin-bottom :0px";
   newQuotes.style.display = "none";
+  time.style = "font-size: 80px";
+}
+
+let isLoading = false;
+
+async function onClickSearch() {
+  const searchInput = document.querySelector(".searchInput");
+  const searchResult = document.querySelector(".searchResult");
+
+  // if (!newQuotesInput.value) return;
+  // 이렇게 사용가능
+  if (
+    !searchInput.value ||
+    searchInput.value.split(" ").join("").length === 0
+  ) {
+    alert("검색 내용을 적어주세요");
+    searchInput.focus();
+    searchInput.value = null;
+    return;
+  }
+
+  if (isLoading) return;
+  isLoading = true;
+
+  const question = searchInput.value;
+  searchInput.value = "검색 중 입니다.. 잠시만 기다려주세요.";
+  // const라도 . 속성으로는 바꿀수 있음
+
+  //프론트엔드에서 백엔드
+  const response = await axios.post(
+    //await(시간 차) 쓰기 위해 async function 붙어야함
+    "https://holy-fire-2749.fly.dev/chat",
+    {
+      //question: question, //키(백엔드에서 정의해놓음)랑 벨류랑 같으면 생략도 가능
+      question,
+      //첫번째 : 주소 /두번째: 바디 (질문), 개인정보 /해더에 정보의 정보
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer BLOCKCHAINSCHOOL3", //이렇게 쓰면 털림 (안증용)
+      },
+    }
+  );
+
+  if (response.status === 200) {
+    searchResult.style.display = "inline";
+    searchResult.innerText = response.data.choices[0].message.content;
+  }
+
+  searchInput.value = null;
+  isLoading = false;
+}
+
+function onChickToggle(value) {
+  const nft = document.querySelector(".nft");
+  const nftView = document.querySelector(".nftView");
+
+  if (value) {
+    nft.style.display = "inline-block";
+    nftView.style.display = "none";
+  } else {
+    nft.style.display = "none";
+    nftView.style.display = "inline-block";
+  }
 }

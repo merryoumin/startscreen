@@ -1,4 +1,12 @@
 @import "theme";
+@keyframes spain {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 body {
   margin: 0;
   background-color: $yellow;
@@ -41,6 +49,66 @@ main {
   align-items: center;
   // 교차축
   // ->정중간 위치
+
+  .search {
+    display: flex;
+    justify-content: space-between;
+    .searchLogo {
+      width: 32px;
+      height: 32px;
+      animation: spain 2s linear infinite;
+    }
+  }
+
+  .searchResult {
+    display: none;
+  }
+
+  .nft {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 24px;
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 9999px;
+    }
+    .nftHover {
+      position: absolute;
+      display: none;
+      width: 150px;
+      height: 150px;
+      top: 0;
+      left: 0;
+      a {
+        font-size: 20px;
+      }
+      button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: -8px;
+        border-radius: 9999px;
+        width: 24px;
+        height: 24px;
+      }
+    }
+    &:hover {
+      .nftHover {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  .nftView {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 24px;
+    display: none;
+  }
 }
 
 .my-element {
@@ -55,8 +123,10 @@ main {
 .time {
   font-size: 80px;
   font-weight: 900;
+  margin-bottom: 50px;
   background-color: $white;
   width: 500px;
+  height: 100px;
   border-radius: 9999px;
   display: flex;
   flex-direction: row;
@@ -176,8 +246,8 @@ a:after {
   div:nth-child(1) {
     display: inline;
     position: absolute;
-    top: 66%;
-    left: 32%;
+    top: 43%;
+    left: 30%;
     button {
       background-color: rgba(22, 244, 196, 0.664);
       &:hover {
@@ -188,13 +258,13 @@ a:after {
   }
   input {
     position: absolute;
-    left: 38%;
-    top: 67%;
+    left: 36.5%;
+    top: 44%;
   }
   div:nth-child(3) {
     display: inline;
     position: absolute;
-    top: 66%;
+    top: 43%;
     left: 65%;
     button {
       &:hover {

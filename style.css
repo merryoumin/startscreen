@@ -1,3 +1,11 @@
+@keyframes spain {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 body {
   margin: 0;
   background-color: rgba(245, 235, 50, 0.459);
@@ -35,6 +43,61 @@ main {
   justify-content: center;
   align-items: center;
 }
+main .search {
+  display: flex;
+  justify-content: space-between;
+}
+main .search .searchLogo {
+  width: 32px;
+  height: 32px;
+  animation: spain 2s linear infinite;
+}
+main .searchResult {
+  display: none;
+}
+main .nft {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 24px;
+}
+main .nft img {
+  width: 150px;
+  height: 150px;
+  border-radius: 9999px;
+}
+main .nft .nftHover {
+  position: absolute;
+  display: none;
+  width: 150px;
+  height: 150px;
+  top: 0;
+  left: 0;
+}
+main .nft .nftHover a {
+  font-size: 20px;
+}
+main .nft .nftHover button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: -8px;
+  border-radius: 9999px;
+  width: 24px;
+  height: 24px;
+}
+main .nft:hover .nftHover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .nftView {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 24px;
+  display: none;
+}
 
 .my-element {
   display: inline-block;
@@ -47,8 +110,10 @@ main {
 .time {
   font-size: 80px;
   font-weight: 900;
+  margin-bottom: 50px;
   background-color: rgba(244, 243, 243, 0.241);
   width: 500px;
+  height: 100px;
   border-radius: 9999px;
   display: flex;
   flex-direction: row;
@@ -167,8 +232,8 @@ a:after {
 .newQuotes div:nth-child(1) {
   display: inline;
   position: absolute;
-  top: 66%;
-  left: 32%;
+  top: 43%;
+  left: 30%;
 }
 .newQuotes div:nth-child(1) button {
   background-color: rgba(22, 244, 196, 0.664);
@@ -179,13 +244,13 @@ a:after {
 }
 .newQuotes input {
   position: absolute;
-  left: 38%;
-  top: 67%;
+  left: 36.5%;
+  top: 44%;
 }
 .newQuotes div:nth-child(3) {
   display: inline;
   position: absolute;
-  top: 66%;
+  top: 43%;
   left: 65%;
 }
 .newQuotes div:nth-child(3) button:hover {
